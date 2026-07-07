@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,6 +59,8 @@
             --sh-lg: 0 20px 60px rgba(33, 150, 243, 0.15);
             --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --radius: 16px;
+            --section-pad: 80px 7%;
+            --section-min: 72vh;
         }
 
         /* ─── NAV ─── */
@@ -202,45 +203,6 @@
             grid-template-columns: 1fr 340px;
             gap: 80px;
             align-items: center;
-        }
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.68rem;
-            font-weight: 600;
-            color: var(--blue);
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: 99px;
-            padding: 0.25rem 1rem 0.25rem 0.6rem;
-            margin-bottom: 1.2rem;
-        }
-        .hero-badge .dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--blue);
-            animation: pulse-dot 2s ease-in-out infinite;
-        }
-        .hero-badge svg {
-            width: 18px;
-            height: 18px;
-            stroke: var(--blue);
-            stroke-width: 2;
-            fill: none;
-        }
-        @keyframes pulse-dot {
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.3;
-                transform: scale(0.6);
-            }
         }
         .hero-greeting {
             font-size: 1.05rem;
@@ -467,11 +429,16 @@
 
         /* ─── SECTIONS ─── */
         section {
-            padding: 100px 7%;
+            padding: var(--section-pad);
+            min-height: var(--section-min);
+            display: flex;
+            align-items: center;
+            position: relative;
         }
-        .inner {
+        section .inner {
             max-width: 1100px;
             margin: 0 auto;
+            width: 100%;
         }
         .eyebrow {
             font-size: 0.7rem;
@@ -902,7 +869,7 @@
         }
         .experience-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 1rem;
         }
         .exp-card {
@@ -941,6 +908,12 @@
             color: var(--text-2);
             line-height: 1.65;
             font-weight: 400;
+        }
+
+        @media (max-width: 960px) {
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* ─── CONFERENCES ─── */
@@ -1208,6 +1181,7 @@
         #contact {
             background: linear-gradient(170deg, #f8faff 0%, #eef4ff 50%, #e8f0ff 100%);
             border-top: 1px solid rgba(33, 150, 243, 0.05);
+            min-height: 60vh;
         }
         .contact-wrap {
             display: grid;
@@ -1475,8 +1449,9 @@
 
         /* ─── RESPONSIVE OVERRIDES ─── */
         @media (max-width: 640px) {
-            section {
-                padding: 56px 5%;
+            :root {
+                --section-pad: 56px 5%;
+                --section-min: 60vh;
             }
             #hero {
                 padding: 80px 5% 40px;
@@ -1615,8 +1590,9 @@
         }
 
         @media (max-width: 420px) {
-            section {
-                padding: 44px 4%;
+            :root {
+                --section-pad: 44px 4%;
+                --section-min: 50vh;
             }
             #hero {
                 padding: 72px 4% 32px;
@@ -1712,14 +1688,6 @@
     <section id="hero">
         <div class="hero-inner">
             <div>
-                <div class="hero-badge">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M8 21h8M12 21v-4M12 9v6M3 9h18M6 9l-1.5 6h15L18 9"/>
-                        <circle cx="12" cy="5" r="3"/>
-                    </svg>
-                    <span class="dot"></span>
-                    Open to connect · Sri Lanka
-                </div>
                 <p class="hero-greeting">Hello! I'm</p>
                 <h1 class="hero-h1">Sakithma<br />Rajapaksha<span class="blue">.</span></h1>
                 <p class="hero-role">Biotechnology Undergraduate · SLIIT</p>
